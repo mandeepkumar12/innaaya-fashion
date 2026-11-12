@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Innaaya — Something Beautiful is Coming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1a0f0c; --bg2:#2a1712; --text:#f5ead9; --muted:#c9b59a;
+  --gold:#d4a95a; --gold2:#f0d28f; --wine:#7a1f2e; --brown:#7b5a4e;
+  --line:rgba(212,169,90,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Poppins',system-ui,sans-serif;color:var(--text);
+  background:
+    radial-gradient(ellipse at 20% 10%,rgba(122,31,46,.35),transparent 55%),
+    radial-gradient(ellipse at 85% 90%,rgba(212,169,90,.18),transparent 55%),
+    linear-gradient(160deg,var(--bg),var(--bg2));
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:calc(24px + env(safe-area-inset-top,0px)) 20px calc(24px + env(safe-area-inset-bottom,0px));
+  overflow-x:hidden;position:relative;
+}
+/* floating lantern glows */
+.glow{position:fixed;border-radius:50%;filter:blur(60px);opacity:.5;animation:float 9s ease-in-out infinite;pointer-events:none}
+.g1{width:220px;height:220px;background:rgba(240,210,143,.22);top:6%;left:4%}
+.g2{width:260px;height:260px;background:rgba(122,31,46,.4);bottom:4%;right:6%;animation-delay:-4s}
+.g3{width:140px;height:140px;background:rgba(240,210,143,.18);top:55%;left:70%;animation-delay:-2s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
+
+.frame{
+  position:relative;z-index:2;width:100%;max-width:880px;text-align:center;
+  padding:56px 32px 40px;border:1px solid var(--line);
+  background:rgba(26,15,12,.55);backdrop-filter:blur(6px);
+}
+.frame::before{content:"";position:absolute;inset:8px;border:1px solid rgba(212,169,90,.2);pointer-events:none}
+.corner{position:absolute;width:18px;height:18px;border:2px solid var(--gold)}
+.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+
+.logo{display:flex;justify-content:center;line-height:0;filter:drop-shadow(0 4px 24px rgba(212,169,90,.25))}
+.logo-svg{width:clamp(220px,46vw,380px);height:auto}
+.tag{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:28px auto;max-width:360px}
+.divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.divider span:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.divider i{color:var(--gold);font-style:normal;font-size:18px}
+
+.script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(30px,6vw,48px);color:var(--gold2)}
+h1{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(38px,8vw,72px);line-height:1.05;margin:4px 0 16px;color:var(--text);
+}
+.sub{max-width:520px;margin:0 auto;color:var(--muted);font-weight:300;line-height:1.8;font-size:15px}
+
+/* progress */
+.progress{max-width:420px;margin:32px auto 0}
+.bar{height:4px;background:rgba(245,234,217,.12);border-radius:4px;overflow:hidden}
+.bar b{display:block;height:100%;width:72%;border-radius:4px;
+  background:linear-gradient(90deg,var(--wine),var(--gold),var(--gold2));
+  background-size:200% 100%;animation:shine 3s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.plabel{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+/* notify */
+.notify{display:flex;max-width:440px;margin:36px auto 0;border:1px solid var(--line)}
+.notify input{flex:1;min-width:0;background:transparent;border:0;outline:0;padding:15px 16px;color:var(--text);font:400 14px 'Poppins',sans-serif}
+.notify input::placeholder{color:#9c8872}
+.notify button{border:0;cursor:pointer;padding:0 22px;font:500 12px 'Poppins',sans-serif;letter-spacing:.18em;text-transform:uppercase;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));color:#2a1712;transition:.25s}
+.notify button:hover{filter:brightness(1.1);letter-spacing:.24em}
+.msg{height:20px;margin-top:10px;font-size:13px;color:var(--gold2)}
+
+.features{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-top:26px;font-size:12px;color:var(--muted);letter-spacing:.06em}
+.features span::before{content:"✦ ";color:var(--gold)}
+
+.social{display:flex;justify-content:center;gap:14px;margin-top:28px}
+.social a{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold);text-decoration:none;transition:.3s}
+.social a:hover{background:var(--gold);color:#2a1712;transform:translateY(-3px)}
+.social svg{width:18px;height:18px;fill:currentColor}
+footer{margin-top:28px;font-size:11px;color:#9c8872;letter-spacing:.08em}
+
+@media(max-width:520px){.frame{padding:44px 18px 32px}.notify{flex-direction:column}.notify button{padding:14px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+
+<main class="frame">
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+
+  <div class="logo"><svg class="logo-svg" role="img" aria-label="Innaaya" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 577.69 197.83">
+  <defs><linearGradient id="goldG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d4a95a"/><stop offset=".5" stop-color="#f0d28f"/><stop offset="1" stop-color="#d4a95a"/></linearGradient></defs>
+  <path fill="url(#goldG)" d="M344.76,184.58c12.6-31.15,25.08-62,38.01-93.97,1.62,2.66,3.11,4.57,4.06,6.73,10.9,24.66,21.7,49.36,32.56,74.03,1.14,2.6,2.34,5.19,3.7,7.69,2.64,4.84,6.76,7.46,10.19,6.69,4.46-1,6.75-4.5,6.82-10.79.09-7.05-.58-14.17.18-21.13,1.36-12.49-2.19-23.04-9.81-32.86-5.22-6.72-9.23-14.37-14.19-21.32-2.43-3.4-5.78-6.14-8.56-9.01h26.48c-4.81,3.44-5.17,4.48-2.05,9.48,6.48,10.39,13.15,20.66,20.17,31.64,6.49-11.74,12.76-22.64,18.42-33.84.86-1.7-1.08-4.82-1.7-7.17h14.6c-7.13,2.34-9.65,8.78-12.89,14.58-4.82,8.63-9.7,17.23-14.32,25.97-1.13,2.14-1.86,4.76-1.9,7.18-.18,11.7-.14,23.4-.02,35.1.06,5.53,1.35,10.52,7.55,12.8h-59.68c1.27-1.57,3.56-3.23,4.03-5.3.47-2.08-.55-4.69-1.44-6.86-8.23-19.93-16.57-39.81-24.89-59.69-.44-1.06-1.01-2.07-1.9-3.89-3.65,9.11-7.07,17.53-10.4,25.98-4.89,12.39-9.79,24.78-14.54,37.23-1.59,4.17-3.25,8.55,1.12,12.64h-36.49c1.39-1.67,3.88-3.38,4.24-5.46.42-2.4-.73-5.26-1.74-7.69-7.99-19.37-16.11-38.69-24.21-58.02-.51-1.21-1.17-2.35-2.19-4.39-4.04,10.29-7.79,19.79-11.49,29.31-4.56,11.72-9.06,23.46-13.6,35.19-1.48,3.82-1.89,7.5,1.6,11.05h-10.2c.62-2.54.88-4.9,1.76-7.02,7.35-17.67,14.87-35.27,22.21-52.94,3.9-9.4,7.58-18.9,11.29-28.38.95-2.43,1.62-4.98,2.75-8.52,1.43,2.26,2.52,3.6,3.2,5.12,11.43,25.89,22.8,51.82,34.23,77.71,1.96,4.44,3.5,9.26,9.04,12.15Z"/>
+  <path fill="url(#goldG)" d="M195.72,186.57h-12.38c.99-4.25,2.8-8.58,2.86-12.93.33-23.23.24-46.47.27-69.71,0-5.16-.89-9.91-6.51-12.29,8.36-2.37,12.24-1.09,17.35,5.2,15.01,18.5,30.09,36.96,45.14,55.43.55.68,1.16,1.3,2.4,2.69.24-2.13.52-3.49.52-4.84.04-16.19.09-32.38.03-48.57-.02-4.13-.56-8.19-5.3-10.34h14.27c-6.36,2.89-5.79,8.57-5.74,13.94.22,23.53.53,47.06.8,70.59.03,2.99,0,5.98,0,8.57-19.29-24.7-38.71-49.58-58.86-75.37-.26,2.19-.46,3.13-.46,4.07-.02,20.09-.09,40.18.01,60.26.02,5.03-.38,10.48,5.6,13.3Z"/>
+  <path fill="url(#goldG)" d="M511.4,89.63c4.11,8.7,7.85,16.48,11.48,24.31,8.99,19.42,17.9,38.89,26.93,58.3,2.64,5.66,5.05,11.63,11.76,14.19h-30.23c5.56-3.58,6.2-4.86,3.9-10.19-9.09-21.01-18.32-41.97-27.51-62.93-.28-.64-.75-1.2-1.5-2.38-7.48,19.39-14.73,38.2-21.99,57.02-1.08,2.79-2.34,5.53-3.16,8.4-1.05,3.69-1.56,7.43,3.22,10.12h-11.88c12.92-32.09,25.72-63.89,38.98-96.83Z"/>
+  <g>
+    <path fill="url(#goldG)" d="M34.24,72.14h46.54l.06.31c-.68.16-1.35.35-2.04.48-7.82,1.41-11.56,5.51-12.25,13.45-.09,1.06-.1,2.12-.1,3.19-.01,4.18,0,8.35,0,12.5.23.07.41.18.48.13,9.52-7.27,18.96-14.65,26.05-24.5,4.68-6.5,7.85-13.59,8.18-21.73.07-1.81.01-3.62.13-5.46,1.77,5.34,3.59,10.76,2.29,16.46-2.22,9.73-7.63,17.72-14.4,24.87-8.08,8.53-17.88,14.74-27.82,20.77-4.09,2.48-8.14,5.05-12.55,7.79,0-1.33,0-2.37,0-3.4-.04-9.99.07-19.98-.17-29.96-.2-8.19-4.23-12.58-12.25-14.07-.73-.14-1.45-.34-2.17-.51.01-.11.03-.22.04-.33Z"/>
+    <path fill="url(#goldG)" d="M80.77,184.3h-46.34c-.03-.1-.06-.2-.08-.29.39-.13.76-.31,1.16-.37,8.62-1.32,12.91-5.92,13.13-14.71.24-9.7.12-19.4.24-29.1.01-.86.38-2.08,1-2.5,5.18-3.44,10.47-6.73,15.73-10.06.16-.1.38-.09.82-.18,0,.91,0,1.73,0,2.55,0,11.97-.02,23.93,0,35.9,0,1.77-.03,3.56.2,5.3,1.02,7.59,4.86,11.43,12.59,12.73.54.09,1.07.18,1.61.26-.02.16-.03.31-.05.47Z"/>
+    <path fill="url(#goldG)" d="M103.57,74.59c-.93,16.12-8.31,28.79-21.13,38.05-7.9,5.7-16.45,10.5-24.74,15.66-6.68,4.16-13.35,8.31-19.05,13.82-10.07,9.75-15.75,21.46-15.93,35.63,0,.2-.08.41-.23,1.21-1.53-9.18-.91-17.54,2.19-25.74,4.87-12.88,13.91-22.25,25.23-29.52,7.97-5.13,16.3-9.69,24.44-14.55,7.52-4.49,14.54-9.6,20.03-16.56,3.95-5.01,6.83-10.56,8.69-16.65.14-.46.34-.9.51-1.36Z"/>
+    <path fill="url(#goldG)" d="M98.07,12.67c2.16,3.86,4.16,7.11,5.84,10.52,1.83,3.71,1.49,7.52-.16,11.27-1.42,3.22-2.79,6.47-4.3,10-2.15-4.15-4.35-8.08-6.24-12.17-1.22-2.65-1.12-5.57-.05-8.28,1.44-3.66,3.11-7.23,4.91-11.34Z"/>
+    <path fill="url(#goldG)" d="M95.85,47.98c-12.11.17-19.6-5.81-21.39-16.92,9.42-1.1,18.16,5.76,21.39,16.92Z"/>
+    <path fill="url(#goldG)" d="M124.3,27.99c-2.52,11.56-7.55,17.62-20.59,18.95,2.37-11.42,9.7-18.2,20.59-18.95Z"/>
+  </g>
+  <path fill="url(#goldG)" d="M116.51,186.57h-12.38c.99-4.25,2.8-8.58,2.86-12.93.33-23.23.24-46.47.27-69.71,0-5.16-.89-9.91-6.51-12.29,8.36-2.37,12.24-1.09,17.35,5.2,15.01,18.5,30.09,36.96,45.14,55.43.55.68,1.16,1.3,2.4,2.69.24-2.13.52-3.49.52-4.84.04-16.19.09-32.38.03-48.57-.02-4.13-.56-8.19-5.3-10.34h14.27c-6.36,2.89-5.79,8.57-5.74,13.94.22,23.53.53,47.06.8,70.59.03,2.99,0,5.98,0,8.57-19.29-24.7-38.71-49.58-58.86-75.37-.26,2.19-.46,3.13-.46,4.07-.02,20.09-.09,40.18.01,60.26.02,5.03-.38,10.48,5.6,13.3Z"/>
+</svg></div>
+  <div class="tag">Ethnic Wear · Crafted with Love</div>
+
+  <div class="divider"><span></span><i>✦</i><span></span></div>
+
+  <div class="script">We're creating something</div>
+  <h1>Beautifully New</h1>
+  <p class="sub">Our store is getting a graceful makeover. We're stitching together fresh co-ord sets, kaftaans, suits and unstitched kurtis — and we'll be back very soon.</p>
+
+  <div class="progress">
+    <div class="bar"><b></b></div>
+    <div class="plabel"><span>Under Maintenance</span><span>72%</span></div>
+  </div>
+
+  <form class="notify" id="form" onsubmit="return false">
+    <input type="email" id="email" placeholder="Enter your email to get notified" aria-label="Email">
+    <button type="submit" id="btn">Notify Me</button>
+  </form>
+  <div class="msg" id="msg" aria-live="polite"></div>
+
+  <div class="features">
+    <span>Pan India Free Shipping</span><span>Cash on Delivery</span><span>5 Days Easy Return</span>
+  </div>
+
+  <div class="social">
+    <a href="https://www.instagram.com/innaya.fashions?obrf=dHhsMjVrZG5veGs1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.300-.1-4.800-1.700-4.900-4.900C2.200 15.600 2.200 15.200 2.200 12s0-3.600.1-4.800C2.400 3.900 4 2.400 7.200 2.300 8.400 2.200 8.800 2.200 12 2.200zM12 0C8.700 0 8.300 0 7.100.1 2.700.3.300 2.700.1 7.100 0 8.300 0 8.700 0 12s0 3.700.1 4.900c.2 4.400 2.600 6.800 7 7C8.300 24 8.700 24 12 24s3.700 0 4.900-.1c4.400-.2 6.800-2.600 7-7 .1-1.200.1-1.600.1-4.900s0-3.700-.1-4.900c-.2-4.400-2.600-6.800-7-7C15.700 0 15.300 0 12 0zm0 5.800a6.200 6.200 0 100 12.400 6.200 6.200 0 000-12.400zM12 16a4 4 0 110-8 4 4 0 010 8zm6.400-11.800a1.400 1.400 0 100 2.900 1.400 1.400 0 000-2.900z"/></svg></a>
+    <a href="https://www.facebook.com/Innaayafashionstore" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 10-13.900 11.900v-8.400H7.100V12h3V9.400c0-3 1.800-4.700 4.500-4.700 1.300 0 2.700.2 2.700.2v3h-1.500c-1.500 0-2 .9-2 1.900V12h3.400l-.5 3.500h-2.900v8.400A12 12 0 0024 12z"/></svg></a>
+  </div>
+
+  <footer>© 2026 Innaaya. All rights reserved.</footer>
+</main>
+
+<script>
+
+document.getElementById('form').addEventListener('submit',function(){
+  var v = document.getElementById('email').value.trim();
+  var msg = document.getElementById('msg');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ msg.textContent='Please enter a valid email address.'; return; }
+  msg.textContent='Thank you! We’ll let you know the moment we’re live. ✨';
+  document.getElementById('email').value='';
+});
+</script>
+</body>
+</html>
